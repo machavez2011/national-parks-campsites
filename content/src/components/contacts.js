@@ -27,6 +27,16 @@ class Contacts extends React.PureComponent {
   }
 
   render() {
+    const contacts = this.state.contacts ? (
+      this.state.contacts.map(contact => (
+        <li key={contact._id}>
+          {contact.firstName} {contact.lastName}
+        </li>
+      ))
+    ) : (
+      <React.Fragment />
+    );
+
     return (
       <React.Fragment>
         <h1>Contacts List</h1>
@@ -43,7 +53,9 @@ class Contacts extends React.PureComponent {
           onChange={this.onChange}
         />
         <br />
+        <br />
         <button type="button">Submit Contact</button>
+        <ul>{contacts}</ul>
       </React.Fragment>
     );
   }
