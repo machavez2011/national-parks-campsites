@@ -10,6 +10,7 @@ class Contacts extends React.PureComponent {
       contacts: []
     };
     this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   componentWillMount() {
@@ -24,6 +25,14 @@ class Contacts extends React.PureComponent {
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+
+  onSave() {
+    let newContact = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
+    }
+    contactsService.create(newContact);
   }
 
   render() {
@@ -54,7 +63,9 @@ class Contacts extends React.PureComponent {
         />
         <br />
         <br />
-        <button type="button">Submit Contact</button>
+        <button type="button" onClick={this.onSave}>
+          Submit Contact
+        </button>
         <ul>{contacts}</ul>
       </React.Fragment>
     );

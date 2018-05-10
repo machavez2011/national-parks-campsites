@@ -13,6 +13,17 @@ export function readAll() {
     .catch(responseErrorHandler);
 }
 
+export function create(newContact) {
+  const config = {
+    method: "POST",
+    data: newContact
+  };
+
+  return axiosInstance(baseUrl, config)
+    .then(responseSuccessHandler)
+    .catch(responseErrorHandler)
+}
+
 const responseSuccessHandler = response => {
   return response.data;
 };
