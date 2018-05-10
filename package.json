@@ -1,0 +1,19 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "description": "Generic reusable noNode and React app",
+  "main": "\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001bserver\u001b[C\u001b[C\u001b[D\u001b[D.js)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Chavez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.31"
+  }
+}
