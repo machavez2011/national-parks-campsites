@@ -6,11 +6,8 @@ class Contacts extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      // firstName: "",
-      // lastName: "",
       contacts: []
     };
-    //this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onCancel = this.onCancel.bind(this);
@@ -54,24 +51,6 @@ class Contacts extends React.PureComponent {
       })
       .catch(err => console.log(err));
   }
-
-  // onSave() {
-  //   let newContact = {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName
-  //   }
-  //   //const that = this;
-  //   contactsService.create(newContact)
-  //     .then(contact => {
-  //       this.setState(prevState => {
-  //         //contacts: [...that.state.contacts, contact.ops]
-  //         // return {contacts: [prevState.contacts, contact.ops]}
-  //         const field = { ...prevState.formData._id, _id: contact };
-  //         const contact = { ...prevState.formData, _id: field };
-  //         return { ...prevState, contacts: contact}
-  //       })
-  //     });
-  // }
 
   onSave(updatedFormData) {
     this.setState(prevState => {
@@ -120,25 +99,6 @@ class Contacts extends React.PureComponent {
           onDelete={this.onDelete}
           onCancel={this.onCancel}
         />
-
-        {/* <h1>Contacts List</h1> */}
-        {/* <h3>First Name</h3> */}
-        {/* <input
-          name="firstName"
-          value={this.state.firstName}
-          onChange={this.onChange}
-        />
-        <h3>Last Name</h3>
-        <input
-          name="lastName"
-          value={this.state.lastName}
-          onChange={this.onChange}
-        />
-        <br />
-        <br />
-        <button type="button" onClick={this.onSave}>
-          Submit Contact
-        </button> */}
         <ul>{contacts}</ul>
       </React.Fragment>
     );
