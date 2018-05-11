@@ -103,7 +103,7 @@ function create(contact) {
 }
 
 function update(id, doc) {
-  //doc._id = new ObjectId(doc._id);
+  doc._id = new ObjectId(doc._id);
   return conn
     .db()
     .collection("contacts")

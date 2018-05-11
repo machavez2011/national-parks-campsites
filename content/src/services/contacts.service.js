@@ -21,7 +21,28 @@ export function create(newContact) {
 
   return axiosInstance(baseUrl, config)
     .then(responseSuccessHandler)
-    .catch(responseErrorHandler)
+    .catch(responseErrorHandler);
+}
+
+export function update(updatedContact) {
+  const config = {
+    method: "PUT",
+    data: updatedContact
+  };
+
+  return axiosInstance(baseUrl + updatedContact._id, config)
+    .then(responseSuccessHandler)
+    .catch(responseErrorHandler);
+}
+
+export function del(id) {
+  const config = {
+    method: "DELETE"
+  };
+
+  return axiosInstance(baseUrl + id, config)
+    .then(responseSuccessHandler)
+    .catch(responseErrorHandler);
 }
 
 const responseSuccessHandler = response => {
