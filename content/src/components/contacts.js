@@ -84,7 +84,7 @@ class Contacts extends React.PureComponent {
     const contacts = this.state.contacts ? (
       this.state.contacts.map(contact => (
         <li key={contact._id} onClick={this.onSelect.bind(this, contact)}>
-          {contact.firstName} {contact.lastName}
+          {contact.nationalPark} {contact.phoneNumber}
         </li>
       ))
     ) : (
@@ -93,6 +93,7 @@ class Contacts extends React.PureComponent {
 
     return (
       <React.Fragment>
+        <h3>Contact a Park Ranger for more information</h3>
         <ContactsForm
           formData={this.state.formData}
           onSave={this.onSave}

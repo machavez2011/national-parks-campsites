@@ -38,7 +38,9 @@ router.post("/", function(req, res) {
   contact = req.body;
   create(contact)
     .then(newContact => {
-      res.status(201).json(newContact);
+      const responseModel = new responses.ItemResponse()
+      responseModel.item = newContact;
+      res.status(201).json(responseModel);
     })
     .catch(err => {
       console.log(err);

@@ -28,8 +28,8 @@ class ContactsForm extends React.PureComponent {
 
     const initializedContact = {
       _id: contact._id || "",
-      firstName: contact.firstName || "",
-      lastName: contact.lastName || ""
+      nationalPark: contact.nationalPark || "",
+      phoneNumber: contact.phoneNumber || ""
     };
 
     let formData = {
@@ -40,18 +40,18 @@ class ContactsForm extends React.PureComponent {
         validation: {},
         touched: false
       },
-      firstName: {
-        originalValue: initializedContact.firstName,
-        value: initializedContact.firstName,
+      nationalPark: {
+        originalValue: initializedContact.nationalPark,
+        value: initializedContact.nationalPark,
         valid: true,
         validation: {
           required: true
         },
         touched: false
       },
-      lastName: {
-        originalValue: initializedContact.lastName,
-        value: initializedContact.lastName,
+      phoneNumber: {
+        originalValue: initializedContact.phoneNumber,
+        value: initializedContact.phoneNumber,
         valid: true,
         validation: {
           required: true
@@ -79,8 +79,8 @@ class ContactsForm extends React.PureComponent {
     }
     const that = this;
     let item = {
-      firstName: this.state.formData.firstName.value,
-      lastName: this.state.formData.lastName.value
+      nationalPark: this.state.formData.nationalPark.value,
+      phoneNumber: this.state.formData.phoneNumber.value
     };
 
     if (this.state.formData._id.value.length > 0) {
@@ -111,21 +111,20 @@ class ContactsForm extends React.PureComponent {
     return (
       <React.Fragment>
         <form>
-          <h1>Contacts List</h1>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="nationalPark">National Park</label>
           <input
             type="text"
-            name="firstName"
-            id="firstName"
-            value={this.state.formData.firstName.value}
+            name="nationalPark"
+            id="nationalPark"
+            value={this.state.formData.nationalPark.value}
             onChange={this.onChange}
           />
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="phoneNumber">Phone Number</label>
           <input
             type="text"
-            name="lastName"
-            id="firstName"
-            value={this.state.formData.lastName.value}
+            name="phoneNumber"
+            id="phoneNumber"
+            value={this.state.formData.phoneNumber.value}
             onChange={this.onChange}
           />
           <br />
