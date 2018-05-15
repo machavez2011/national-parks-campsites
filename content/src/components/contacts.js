@@ -1,12 +1,14 @@
 import React from "react";
 import * as contactsService from "../services/contacts.service";
 import ContactsForm from "./ContactsForm";
+import Header from "./Header";
 
-class Contacts extends React.PureComponent {
+class Contacts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: []
+      contacts: [],
+      header: "Contact a park ranger for more information"
     };
     this.onSave = this.onSave.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -93,7 +95,7 @@ class Contacts extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <h3>Contact a Park Ranger for more information</h3>
+        <Header header={this.state.header} />
         <ContactsForm
           formData={this.state.formData}
           onSave={this.onSave}

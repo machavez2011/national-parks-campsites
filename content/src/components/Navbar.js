@@ -1,16 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import woodGrain2 from "../pictures/woodGrain2.jpg";
 
-class Navbar extends React.PureComponent {
+const navbarBackground = {
+  backgroundImage: "url(" + woodGrain2 + ")"
+}
+
+const navbarBtn = {
+  color: "white"
+}
+
+class Navbar extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Link to="/home" className="btn btn-link navbarBtn">
-          Home
-        </Link>
-        <Link to="/contacts" className="btn btn-link navbarBtn">
-          Contacts
-        </Link>
+        <div style={ navbarBackground }>
+          <Link to="/home" className="btn btn-link" style={ navbarBtn }>
+            Home
+          </Link>
+          <Link to="/contacts" className="btn btn-link" style={ navbarBtn }>
+            Contacts
+          </Link>
+        </div>
       </React.Fragment>
     );
   }

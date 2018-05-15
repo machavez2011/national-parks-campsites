@@ -1,10 +1,23 @@
 import React from "react";
+import campground from "../pictures/campground.jpg";
+import Header from "./Header";
 
-class Home extends React.PureComponent {
+const heroImage = {
+  width: "100%"
+};
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      header: "National Park Campsites"
+    };
+  }
   render() {
     return (
       <React.Fragment>
-        <h1>Home Page</h1>
+        <Header header={this.state.header} />
+        <img src={campground} alt="wood" style={heroImage} />
       </React.Fragment>
     );
   }

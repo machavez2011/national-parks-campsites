@@ -2,7 +2,7 @@ import React from "react";
 import * as contactsService from "../services/contacts.service";
 import * as validationHelper from "../helpers/validation.helper";
 
-class ContactsForm extends React.PureComponent {
+class ContactsForm extends React.Component {
   constructor(props) {
     super(props);
 

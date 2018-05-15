@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Contacts from "./Contacts";
 
-class Layout extends React.PureComponent {
+class Layout extends React.Component {
   render() {
     return (
       <React.Fragment>
