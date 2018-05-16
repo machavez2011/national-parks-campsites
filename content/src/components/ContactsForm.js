@@ -110,41 +110,48 @@ class ContactsForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <form>
-          <label htmlFor="nationalPark">National Park</label>
-          <input
-            type="text"
-            name="nationalPark"
-            id="nationalPark"
-            value={this.state.formData.nationalPark.value}
-            onChange={this.onChange}
-          />
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <input
-            type="text"
-            name="phoneNumber"
-            id="phoneNumber"
-            value={this.state.formData.phoneNumber.value}
-            onChange={this.onChange}
-          />
-          <br />
-          <br />
+        <form className="container">
+          <div className="form-group">
+            <label htmlFor="nationalPark">National Park</label>
+            <input
+              type="text"
+              name="nationalPark"
+              className="form-control"
+              id="nationalPark"
+              value={this.state.formData.nationalPark.value}
+              onChange={this.onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              className="form-control"
+              id="phoneNumber"
+              value={this.state.formData.phoneNumber.value}
+              onChange={this.onChange}
+            />
+          </div>
           <button
             type="button"
             onClick={this.onSave}
             disabled={!this.state.formValid}
+            className="btn btn-success"
           >
             Submit Contact
           </button>
           <button
             type="button"
             onClick={this.props.onCancel}
+            className="btn btn-primary"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={() => this.props.onDelete(this.state.formData)}
+            className="btn btn-danger"
           >
             Delete
           </button>
