@@ -1,6 +1,6 @@
 import axiosInstance from "../config/axios.config";
 
-const baseUrl = "http://localhost:8080/";
+const baseUrl = "http://localhost:8080/api/contacts/";
 
 export function readAll() {
   const config = {

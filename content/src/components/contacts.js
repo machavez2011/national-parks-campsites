@@ -91,8 +91,8 @@ class Contacts extends React.Component {
           style={{ listStyle: "none" }}
         >
           <div className="row">
-            <div className="col-md-6">{contact.nationalPark}</div>
-            <div className="col-md-6">{contact.phoneNumber}</div>
+            <div className="col-md-2">{contact.nationalPark}</div>
+            <div className="col-md-2">{contact.phoneNumber}</div>
           </div>
         </li>
       ))
@@ -106,10 +106,10 @@ class Contacts extends React.Component {
         <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-2">
                 <h3>Locations:</h3>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-2">
                 <h3>Numbers:</h3>
               </div>
             </div>

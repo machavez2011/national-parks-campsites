@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const mongodb = require("./mongodb");
+const mongodb = require("../mongodb");
 const conn = mongodb.connection;
 const ObjectId = mongodb.ObjectId;
-const responses = require("./responses");
+const responses = require("../responses");
 
 module.exports = router;
 
@@ -13,7 +13,7 @@ router.get("/", function(req, res) {
     .then(contacts => {
       const responseModel = new responses.ItemsResponse();
       responseModel.items = contacts;
-      res.json(responseModel);
+      res.status(200).json(responseModel);
     })
     .catch(err => {
       console.log(err);
@@ -24,21 +24,21 @@ router.get("/", function(req, res) {
 router.get("/:id([0-9a-fA-F]{24})", function(req, res) {
   readById(req.params.id)
     .then(contact => {
-      const responseModel = new responses.ItemResponse()
+      const responseModel = new responses.ItemResponse();
       responseModel.item = contact;
       res.status(200).json(responseModel);
     })
     .catch(err => {
       console.log(err);
       res.status(500).send(new responses.ErrorResponse(err));
-    })
-})
+    });
+});
 
 router.post("/", function(req, res) {
-  contact = req.body;
+  const contact = req.body;
   create(contact)
     .then(newContact => {
-      const responseModel = new responses.ItemResponse()
+      const responseModel = new responses.ItemResponse();
       responseModel.item = newContact;
       res.status(201).json(responseModel);
     })
@@ -60,16 +60,16 @@ router.put("/:id([0-9a-fA-F]{24})", function(req, res) {
 });
 
 router.delete("/:id([0-9a-fA-F]{24})", function(req, res) {
-    _delete(req.params.id)
-      .then(() => {
-        const responseModel = new responses.SuccessResponse();
-        res.status(200).json(responseModel);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).send(new responses.ErrorResponse(err));
-      });
-  });
+  _delete(req.params.id)
+    .then(() => {
+      const responseModel = new responses.SuccessResponse();
+      res.status(200).json(responseModel);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(new responses.ErrorResponse(err));
+    });
+});
 
 //Server side functions
 
@@ -91,7 +91,7 @@ function readById(id) {
     .findOne({ _id: new ObjectId(id) })
     .then(contact => {
       return contact;
-    })
+    });
 }
 
 function create(contact) {
@@ -106,6 +106,9 @@ function create(contact) {
 
 function update(id, doc) {
   doc._id = new ObjectId(doc._id);
+  // if (doc._id) {
+  //   doc._id = new ObjectId(doc._id)
+  // }
   return conn
     .db()
     .collection("contacts")
