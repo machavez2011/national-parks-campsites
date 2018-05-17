@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
   readAll()
     .then(nationalParks => {
       const responsesModel = new responses.ItemResponse();
-      responsesModel.item = nationalParks;
+      responsesModel.items = nationalParks;
       res.status(200).json(responsesModel);
     })
     .catch(err => {
