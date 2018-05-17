@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import Home from "./Home";
-import Contacts from "./Contacts";
+import Campsites from "./Campsites";
 import NationalParks from "./nationalParks";
 
 class Layout extends React.Component {
@@ -18,7 +18,7 @@ class Layout extends React.Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/national-parks" component={NationalParks} />
-              <Route path="/contacts" component={Contacts} />
+              <Route path="/campsites" component={Campsites} />
             </Switch>
           </div>
         </div>

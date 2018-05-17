@@ -1,6 +1,6 @@
 import axiosInstance from "../config/axios.config";
 
-const baseUrl = "http://localhost:8080/api/contacts/";
+const baseUrl = "http://localhost:8080/api/campsites/";
 
 export function readAll() {
   const config = {
@@ -12,10 +12,10 @@ export function readAll() {
     .catch(responseErrorHandler);
 }
 
-export function create(newContact) {
+export function create(newCampsite) {
   const config = {
     method: "POST",
-    data: newContact
+    data: newCampsite
   };
 
   return axiosInstance(baseUrl, config)
@@ -23,13 +23,13 @@ export function create(newContact) {
     .catch(responseErrorHandler);
 }
 
-export function update(updatedContact) {
+export function update(updatedCampsite) {
   const config = {
     method: "PUT",
-    data: updatedContact
+    data: updatedCampsite
   };
 
-  return axiosInstance(baseUrl + updatedContact._id, config)
+  return axiosInstance(baseUrl + updatedCampsite._id, config)
     .then(responseSuccessHandler)
     .catch(responseErrorHandler);
 }

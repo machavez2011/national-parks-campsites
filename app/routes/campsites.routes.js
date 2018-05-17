@@ -10,9 +10,9 @@ module.exports = router;
 
 router.get("/", function(req, res) {
   readAll()
-    .then(contacts => {
+    .then(campsites => {
       const responseModel = new responses.ItemsResponse();
-      responseModel.items = contacts;
+      responseModel.items = campsites;
       res.status(200).json(responseModel);
     })
     .catch(err => {
@@ -23,9 +23,9 @@ router.get("/", function(req, res) {
 
 router.get("/:id([0-9a-fA-F]{24})", function(req, res) {
   readById(req.params.id)
-    .then(contact => {
+    .then(campsite => {
       const responseModel = new responses.ItemResponse();
-      responseModel.item = contact;
+      responseModel.item = campsite;
       res.status(200).json(responseModel);
     })
     .catch(err => {
@@ -35,11 +35,11 @@ router.get("/:id([0-9a-fA-F]{24})", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  const contact = req.body;
-  create(contact)
-    .then(newContact => {
+  const campsite = req.body;
+  create(campsite)
+    .then(newCampcampsite => {
       const responseModel = new responses.ItemResponse();
-      responseModel.item = newContact;
+      responseModel.item = newCampcampsite;
       res.status(201).json(responseModel);
     })
     .catch(err => {
@@ -50,8 +50,8 @@ router.post("/", function(req, res) {
 
 router.put("/:id([0-9a-fA-F]{24})", function(req, res) {
   update(req.params.id, req.body)
-    .then(updatedContact => {
-      res.status(200).json(updatedContact);
+    .then(updatedCampsite => {
+      res.status(200).json(updatedCampsite);
     })
     .catch(err => {
       console.log(err);
@@ -76,31 +76,31 @@ router.delete("/:id([0-9a-fA-F]{24})", function(req, res) {
 function readAll() {
   return conn
     .db()
-    .collection("contacts")
+    .collection("campsites")
     .find()
     .toArray()
-    .then(contacts => {
-      return contacts;
+    .then(campsites => {
+      return campsites;
     });
 }
 
 function readById(id) {
   return conn
     .db()
-    .collection("contacts")
+    .collection("campsites")
     .findOne({ _id: new ObjectId(id) })
-    .then(contact => {
-      return contact;
+    .then(campsite => {
+      return campsite;
     });
 }
 
-function create(contact) {
+function create(campsite) {
   return conn
     .db()
-    .collection("contacts")
-    .insert(contact)
-    .then(contact => {
-      return contact;
+    .collection("campsites")
+    .insert(campsite)
+    .then(campsite => {
+      return campsite;
     });
 }
 
@@ -111,17 +111,17 @@ function update(id, doc) {
   // }
   return conn
     .db()
-    .collection("contacts")
+    .collection("campsites")
     .replaceOne({ _id: new ObjectId(id) }, doc)
-    .then(updatedContact => {
-      return updatedContact;
+    .then(updatedCampsite => {
+      return updatedCampsite;
     });
 }
 
 function _delete(id) {
   return conn
     .db()
-    .collection("contacts")
+    .collection("campsites")
     .deleteOne({ _id: new ObjectId(id) })
     .then(result => Promise.resolve());
 }

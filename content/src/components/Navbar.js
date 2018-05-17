@@ -27,8 +27,8 @@ class Navbar extends React.Component {
           <Link to="/national-parks" className="btn btn-link" style={ navbarBtn }>
             National Parks
           </Link>
-          <Link to="/contacts" className="btn btn-link" style={ navbarBtn }>
-            Contacts
+          <Link to="/campsites" className="btn btn-link" style={ navbarBtn }>
+            Campsites
           </Link>
         </div>
       </React.Fragment>

@@ -1,15 +1,15 @@
 import React from "react";
-import * as contactsService from "../services/contacts.service";
+import * as campsitesService from "../services/campsites.service";
 import * as validationHelper from "../helpers/validation.helper";
 
-class ContactsForm extends React.Component {
+class CampsitesForm extends React.Component {
   constructor(props) {
     super(props);
 
     const formData = this.convertPropsToFormData(props);
 
     this.state = {
-      contacts: [],
+      campsites: [],
       formData: formData,
       formValid: false
     };
@@ -24,34 +24,34 @@ class ContactsForm extends React.Component {
   }
 
   convertPropsToFormData(props) {
-    const contact = props.formData && props.formData._id ? props.formData : {};
+    const campsite = props.formData && props.formData._id ? props.formData : {};
 
-    const initializedContact = {
-      _id: contact._id || "",
-      nationalPark: contact.nationalPark || "",
-      phoneNumber: contact.phoneNumber || ""
+    const initializedCampsite = {
+      _id: campsite._id || "",
+      nationalPark: campsite.nationalPark || "",
+      campsite: campsite.campsite || ""
     };
 
     let formData = {
       _id: {
-        originalValue: initializedContact._id,
-        value: initializedContact._id,
+        originalValue: initializedCampsite._id,
+        value: initializedCampsite._id,
         valid: true,
         validation: {},
         touched: false
       },
       nationalPark: {
-        originalValue: initializedContact.nationalPark,
-        value: initializedContact.nationalPark,
+        originalValue: initializedCampsite.nationalPark,
+        value: initializedCampsite.nationalPark,
         valid: true,
         validation: {
           required: true
         },
         touched: false
       },
-      phoneNumber: {
-        originalValue: initializedContact.phoneNumber,
-        value: initializedContact.phoneNumber,
+      campsite: {
+        originalValue: initializedCampsite.campsite,
+        value: initializedCampsite.campsite,
         valid: true,
         validation: {
           required: true
@@ -80,19 +80,19 @@ class ContactsForm extends React.Component {
     const that = this;
     let item = {
       nationalPark: this.state.formData.nationalPark.value,
-      phoneNumber: this.state.formData.phoneNumber.value
+      campsite: this.state.formData.campsite.value
     };
 
     if (this.state.formData._id.value.length > 0) {
       item._id = this.state.formData._id.value;
-      contactsService
+      campsitesService
         .update(item)
         .then(data => {
           that.props.onSave(item);
         })
         .catch(error => console.log(error));
     } else {
-      contactsService
+      campsitesService
         .create(item)
         .then(data => {
           this.setState(prevState => {
@@ -123,13 +123,13 @@ class ContactsForm extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="phoneNumber">Phone Number</label>
+            <label htmlFor="campsite">Campsite</label>
             <input
               type="text"
-              name="phoneNumber"
+              name="campsite"
               className="form-control"
-              id="phoneNumber"
-              value={this.state.formData.phoneNumber.value}
+              id="campsite"
+              value={this.state.formData.campsite.value}
               onChange={this.onChange}
             />
           </div>
@@ -139,7 +139,7 @@ class ContactsForm extends React.Component {
             disabled={!this.state.formValid}
             className="btn btn-success"
           >
-            Submit Contact
+            Submit Campsite
           </button>
           <button
             type="button"
@@ -161,4 +161,4 @@ class ContactsForm extends React.Component {
   }
 }
 
-export default ContactsForm;
+export default CampsitesForm;

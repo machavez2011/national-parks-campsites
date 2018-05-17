@@ -1,9 +1,10 @@
 import React from "react";
-import greenBackground from "../pictures/lightGreen.jpg";
+//import greenBackground from "../pictures/lightGreen.jpg";
 
 const headerBackgroundImage = {
-  backgroundImage: "url(" + greenBackground + ")",
-  height: "60px"
+  //backgroundImage: "url(" + greenBackground + ")",
+  height: "60px",
+  backgroundColor: "#c9edb8"
 };
 
 const header = {

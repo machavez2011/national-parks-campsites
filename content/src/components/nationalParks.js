@@ -98,6 +98,7 @@ class NationalParks extends React.Component {
             <ul>{nationalParks}</ul>
           </div>
           <div className="col-md-6">
+            <h3 style={{ textAlign: "center" }}>Add a park:</h3>
             <NationalParksForm
               formData={this.state.formData}
               onSave={this.onSave}

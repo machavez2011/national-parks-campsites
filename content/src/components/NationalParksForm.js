@@ -69,12 +69,94 @@ class NationalParksForm extends React.Component {
     return formData;
   }
 
-  
+  onSave(event) {
+    if (!this.state.formValid) {
+      const formData = JSON.parse(JSON.stringify(this.state.formData));
+      for (let fieldIdentifier in formData) {
+        formData[fieldIdentifier].touched = false;
+      }
+      this.setState({ formData: formData });
+      return;
+    }
+    const that = this;
+    let item = {
+      nationalPark: this.state.formData.nationalPark.value,
+      state: this.state.formData.state.value
+    };
+
+    if (this.state.formData._id.value.length > 0) {
+      item._id = this.state.formData._id.value;
+      nationalParksService
+        .update(item)
+        .then(data => {
+          that.props.onSave(item);
+        })
+        .catch(error => console.log(error));
+    } else {
+      nationalParksService
+        .create(item)
+        .then(data => {
+          this.setState(prevState => {
+            const field = { ...prevState.formData._id, _id: data };
+            const formData = { ...prevState.formData, _id: field };
+            return { ...prevState, formData: formData };
+          });
+
+          that.props.onSave({ ...item, _id: data.item });
+        })
+        .catch(error => console.log(error));
+    }
+  }
 
   render() {
     return (
       <React.Fragment>
-        <h1>Hello World</h1>
+        <form className="container">
+          <div className="form-group">
+            <label htmlFor="nationalPark">National Park</label>
+            <input
+              type="text"
+              name="nationalPark"
+              className="form-control"
+              id="nationalPark"
+              value={this.state.formData.nationalPark.value}
+              onChange={this.onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phoneNumber">State</label>
+            <input
+              type="text"
+              name="state"
+              className="form-control"
+              id="state"
+              value={this.state.formData.state.value}
+              onChange={this.onChange}
+            />
+          </div>
+          <button
+            type="button"
+            onClick={this.onSave}
+            disabled={!this.state.formValid}
+            className="btn btn-success"
+          >
+            Submit Park
+          </button>
+          <button
+            type="button"
+            onClick={this.props.onCancel}
+            className="btn btn-primary"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={() => this.props.onDelete(this.state.formData)}
+            className="btn btn-danger"
+          >
+            Delete
+          </button>
+        </form>
       </React.Fragment>
     );
   }

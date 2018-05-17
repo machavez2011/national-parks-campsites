@@ -1,14 +1,14 @@
 import React from "react";
-import * as contactsService from "../services/contacts.service";
-import ContactsForm from "./ContactsForm";
+import * as campsitesService from "../services/campsites.service";
+import CampsitesForm from "./CampsitesForm";
 import Header from "./Header";
 
-class Contacts extends React.Component {
+class Campsites extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: [],
-      header: "Contact a park ranger for more information"
+      campsites: [],
+      header: "Add a campsite"
     };
     this.onSave = this.onSave.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -18,9 +18,9 @@ class Contacts extends React.Component {
   }
 
   componentDidMount() {
-    contactsService.readAll().then(contacts => {
+    campsitesService.readAll().then(campsites => {
       this.setState({
-        contacts: contacts.items
+        campsites: campsites.items
       });
     });
   }
@@ -38,15 +38,15 @@ class Contacts extends React.Component {
   onDelete() {
     const formData = this.state.formData;
 
-    contactsService
+    campsitesService
       .del(formData._id)
       .then(() => {
         this.setState(prevState => {
-          const updatedItems = prevState.contacts.filter(item => {
+          const updatedItems = prevState.campsites.filter(item => {
             return item._id !== formData._id;
           });
 
-          return { contacts: updatedItems };
+          return { campsites: updatedItems };
         });
 
         this.onCancel();
@@ -56,19 +56,19 @@ class Contacts extends React.Component {
 
   onSave(updatedFormData) {
     this.setState(prevState => {
-      const existingItem = prevState.contacts.filter(item => {
+      const existingItem = prevState.campsites.filter(item => {
         return item._id === updatedFormData._id;
       });
       let updatedItems = [];
       if (existingItem && existingItem.length > 0) {
-        updatedItems = prevState.contacts.map(item => {
+        updatedItems = prevState.campsites.map(item => {
           return item._id === updatedFormData._id ? updatedFormData : item;
         });
       } else {
-        updatedItems = prevState.contacts.concat(updatedFormData);
+        updatedItems = prevState.campsites.concat(updatedFormData);
       }
       return {
-        contacts: updatedItems,
+        campsites: updatedItems,
         formData: null,
         errorMessage: null
       };
@@ -83,16 +83,16 @@ class Contacts extends React.Component {
   }
 
   render() {
-    const contacts = this.state.contacts ? (
-      this.state.contacts.map(contact => (
+    const campsites = this.state.campsites ? (
+      this.state.campsites.map(campsite => (
         <li
-          key={contact._id}
-          onClick={this.onSelect.bind(this, contact)}
+          key={campsite._id}
+          onClick={this.onSelect.bind(this, campsite)}
           style={{ listStyle: "none" }}
         >
           <div className="row">
-            <div className="col-md-2">{contact.nationalPark}</div>
-            <div className="col-md-2">{contact.phoneNumber}</div>
+            <div className="col-md-2">{campsite.nationalPark}</div>
+            <div className="col-md-2">{campsite.campsite}</div>
           </div>
         </li>
       ))
@@ -113,11 +113,11 @@ class Contacts extends React.Component {
                 <h3>Numbers:</h3>
               </div>
             </div>
-            <ul>{contacts}</ul>
+            <ul>{campsites}</ul>
           </div>
           <div className="col-md-6">
-            <h3 style={{ textAlign: "center" }}>Add a location:</h3>
-            <ContactsForm
+            <h3 style={{ textAlign: "center" }}>Add a campsite:</h3>
+            <CampsitesForm
               formData={this.state.formData}
               onSave={this.onSave}
               onDelete={this.onDelete}
@@ -130,4 +130,4 @@ class Contacts extends React.Component {
   }
 }
 
-export default Contacts;
+export default Campsites;
