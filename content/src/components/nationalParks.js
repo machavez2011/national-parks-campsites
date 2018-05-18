@@ -84,34 +84,11 @@ class NationalParks extends React.Component {
   }
 
   render() {
-    const nationalParks = this.state.nationalParks ? (
-      this.state.nationalParks.map(nationalPark => (
-        <div className="col-md-3" style={border}>
-          <li
-            key={nationalPark._id}
-            onClick={this.onSelect.bind(this, nationalPark)}
-            style={{ listStyle: "none" }}
-          >
-            <div className="row">
-              <div className="col-md-12">State: {nationalPark.state}</div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                National Park: {nationalPark.nationalPark}
-              </div>
-            </div>
-          </li>
-        </div>
-      ))
-    ) : (
-      <React.Fragment />
-    );
     return (
       <React.Fragment>
         <Header header={this.state.header} />
         <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6" style={{ marginLeft: "10px" }}>
-            <div className="row">{nationalParks}</div>
             <div className="row">
               <NationalParksList
                 nationalParks={this.state.nationalParks}
