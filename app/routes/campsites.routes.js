@@ -37,9 +37,9 @@ router.get("/:id([0-9a-fA-F]{24})", function(req, res) {
 router.post("/", function(req, res) {
   const campsite = req.body;
   create(campsite)
-    .then(newCampcampsite => {
+    .then(id => {
       const responseModel = new responses.ItemResponse();
-      responseModel.item = newCampcampsite;
+      responseModel.item = id;
       res.status(201).json(responseModel);
     })
     .catch(err => {
@@ -99,9 +99,7 @@ function create(campsite) {
     .db()
     .collection("campsites")
     .insert(campsite)
-    .then(campsite => {
-      return campsite;
-    });
+    .then(campsite => campsite.insertedIds[0].toString());
 }
 
 function update(id, doc) {

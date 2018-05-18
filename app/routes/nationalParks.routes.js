@@ -37,9 +37,9 @@ router.get("/:id([0-9a-fA-F]{24})", function(req, res) {
 router.post("/", function(req, res) {
   const nationalPark = req.body;
   create(nationalPark)
-    .then(newNationalPark => {
+    .then(id => {
       const responseModel = new responses.ItemResponse();
-      responseModel.item = newNationalPark;
+      responseModel.item = id;
       res.status(201).json(responseModel);
     })
     .catch(err => {
@@ -98,9 +98,7 @@ function create(nationalPark) {
     .db()
     .collection("nationalParks")
     .insert(nationalPark)
-    .then(newNationalPark => {
-      return newNationalPark;
-    });
+    .then(newNationalPark => newNationalPark.insertedIds[0].toString());
 }
 
 function update(id, doc) {
