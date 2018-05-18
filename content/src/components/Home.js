@@ -10,7 +10,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      header: "National Park Campsites"
+      header: "Plan your next camping trip!"
     };
   }
   render() {

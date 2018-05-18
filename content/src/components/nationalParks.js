@@ -4,12 +4,6 @@ import * as nationParksService from "../services/nationalParks.service";
 import NationalParksForm from "./NationalParksForm";
 import NationalParksList from "./NationalParksList";
 
-const border = {
-  border: "solid",
-  marginTop: "10px",
-  marginLeft: "10px"
-};
-
 class NationalParks extends React.Component {
   constructor(props) {
     super(props);
@@ -89,12 +83,10 @@ class NationalParks extends React.Component {
         <Header header={this.state.header} />
         <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6" style={{ marginLeft: "10px" }}>
-            <div className="row">
-              <NationalParksList
-                nationalParks={this.state.nationalParks}
-                onClick={this.onSelect}
-              />
-            </div>
+            <NationalParksList
+              nationalParks={this.state.nationalParks}
+              onClick={this.onSelect}
+            />
           </div>
           <div className="col-md-5">
             <h3 style={{ textAlign: "center" }}>Add a park:</h3>

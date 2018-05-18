@@ -1,41 +1,55 @@
 import React from "react";
 
-const border = {
-    border: "solid",
-    marginTop: "10px",
-    marginLeft: "10px"
-  };
+// const border = {
+//   border: "solid",
+//   marginTop: "10px",
+//   marginLeft: "10px"
+// };
 
 class NationalParksList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
   render() {
-    const nationalParks = this.props.nationalParks ? (
+    const nationalParksCalifornia = this.props.nationalParks ? (
       this.props.nationalParks.map(nationalPark => (
-        <div className="col-md-3" style={border}>
-          <li
-            key={nationalPark._id}
-            onClick={this.props.onClick.bind(this, nationalPark)}
-            style={{ listStyle: "none" }}
-          >
-            <div className="row">
-              <div className="col-md-12">State: {nationalPark.state}</div>
+        <React.Fragment>
+          {nationalPark.state === "California" ? (
+            <div className="col-md-3">
+              <li
+                key={nationalPark._id}
+                onClick={this.props.onClick.bind(this, nationalPark)}
+              >
+                {nationalPark.nationalPark}
+              </li>
             </div>
-            <div className="row">
-              <div className="col-md-12">
-                National Park: {nationalPark.nationalPark}
-              </div>
+          ) : null}
+        </React.Fragment>
+      ))
+    ) : (
+      <React.Fragment />
+    );
+    const nationalParksOtherStates = this.props.nationalParks ? (
+      this.props.nationalParks.map(nationalPark => (
+        <React.Fragment>
+          {nationalPark.state !== "California" ? (
+            <div className="col-md-3">
+              <li
+                key={nationalPark._id}
+                onClick={this.props.onClick.bind(this, nationalPark)}
+              >
+                {nationalPark.nationalPark}
+              </li>
             </div>
-          </li>
-        </div>
+          ) : null}
+        </React.Fragment>
       ))
     ) : (
       <React.Fragment />
     );
     return (
       <React.Fragment>
-        {nationalParks}
+        <h3>California</h3>
+        {nationalParksCalifornia}
+        <h3>Other States</h3>
+        {nationalParksOtherStates}
       </React.Fragment>
     );
   }

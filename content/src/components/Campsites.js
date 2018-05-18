@@ -1,6 +1,7 @@
 import React from "react";
 import * as campsitesService from "../services/campsites.service";
 import CampsitesForm from "./CampsitesForm";
+import CampsitesList from "./CampsitesList";
 import Header from "./Header";
 
 class Campsites extends React.Component {
@@ -103,7 +104,7 @@ class Campsites extends React.Component {
     return (
       <React.Fragment>
         <Header header={this.state.header} />
-        <div className="row" style={{ width: "100%" }}>
+        {/* <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6">
             <div className="row">
               <div className="col-md-2">
@@ -117,6 +118,24 @@ class Campsites extends React.Component {
           </div>
           <div className="col-md-6">
             <h3 style={{ textAlign: "center" }}>Add a campsite:</h3>
+            <CampsitesForm
+              formData={this.state.formData}
+              onSave={this.onSave}
+              onDelete={this.onDelete}
+              onCancel={this.onCancel}
+            />
+          </div>
+        </div> */}
+
+        <div className="row" style={{ width: "100%" }}>
+          <div className="col-md-6" style={{ marginLeft: "10px" }}>
+            <CampsitesList
+              campSites={this.state.campsites}
+              onClick={this.onSelect}
+            />
+          </div>
+          <div className="col-md-5">
+            <h3 style={{ textAlign: "center" }}>Add a park:</h3>
             <CampsitesForm
               formData={this.state.formData}
               onSave={this.onSave}
