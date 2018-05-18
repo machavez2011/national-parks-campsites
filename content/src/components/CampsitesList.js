@@ -6,7 +6,7 @@ class CampsitesList extends React.Component {
       this.props.campsites.map(campsite => (
         <React.Fragment>
           {campsite.nationalPark === "Yosemite" ? (
-            <div className="col-md-3">
+            <div className="col-md-12">
               <li
                 key={campsite._id}
                 onClick={this.props.onClick.bind(this, campsite)}
@@ -24,7 +24,7 @@ class CampsitesList extends React.Component {
       this.props.campsites.map(campsite => (
         <React.Fragment>
           {campsite.nationalPark === "Sequoia" ? (
-            <div className="col-md-3">
+            <div className="col-md-12">
               <li
                 key={campsite._id}
                 onClick={this.props.onClick.bind(this, campsite)}
@@ -42,7 +42,7 @@ class CampsitesList extends React.Component {
       this.props.campsites.map(campsite => (
         <React.Fragment>
           {campsite.nationalPark === "Death Valley" ? (
-            <div className="col-md-3">
+            <div className="col-md-12">
               <li
                 key={campsite._id}
                 onClick={this.props.onClick.bind(this, campsite)}

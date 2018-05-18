@@ -8,11 +8,11 @@ import React from "react";
 
 class NationalParksList extends React.Component {
   render() {
-    const nationalParksCalifornia = this.props.nationalParks ? (
+    const CaliforniaNationalParks = this.props.nationalParks ? (
       this.props.nationalParks.map(nationalPark => (
         <React.Fragment>
           {nationalPark.state === "California" ? (
-            <div className="col-md-3">
+            <div className="col-md-12">
               <li
                 key={nationalPark._id}
                 onClick={this.props.onClick.bind(this, nationalPark)}
@@ -26,11 +26,29 @@ class NationalParksList extends React.Component {
     ) : (
       <React.Fragment />
     );
-    const nationalParksOtherStates = this.props.nationalParks ? (
+    const NevadaNationalParks = this.props.nationalParks ? (
       this.props.nationalParks.map(nationalPark => (
         <React.Fragment>
-          {nationalPark.state !== "California" ? (
-            <div className="col-md-3">
+          {nationalPark.state === "Nevada" ? (
+            <div className="col-md-12">
+              <li
+                key={nationalPark._id}
+                onClick={this.props.onClick.bind(this, nationalPark)}
+              >
+                {nationalPark.nationalPark}
+              </li>
+            </div>
+          ) : null}
+        </React.Fragment>
+      ))
+    ) : (
+      <React.Fragment />
+    );
+    const WashingtonNationalParks = this.props.nationalParks ? (
+      this.props.nationalParks.map(nationalPark => (
+        <React.Fragment>
+          {nationalPark.state === "Washington" ? (
+            <div className="col-md-12">
               <li
                 key={nationalPark._id}
                 onClick={this.props.onClick.bind(this, nationalPark)}
@@ -47,9 +65,11 @@ class NationalParksList extends React.Component {
     return (
       <React.Fragment>
         <h3>California</h3>
-        {nationalParksCalifornia}
-        <h3>Other States</h3>
-        {nationalParksOtherStates}
+        {CaliforniaNationalParks}
+        <h3>Nevada</h3>
+        {NevadaNationalParks}
+        <h3>Washington</h3>
+        {WashingtonNationalParks}
       </React.Fragment>
     );
   }
