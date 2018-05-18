@@ -3,6 +3,12 @@ import Header from "./Header";
 import * as nationParksService from "../services/nationalParks.service";
 import NationalParksForm from "./NationalParksForm";
 
+const border = {
+  border: "solid",
+  marginTop: "10px",
+  marginLeft: "10px"
+};
+
 class NationalParks extends React.Component {
   constructor(props) {
     super(props);
@@ -79,13 +85,20 @@ class NationalParks extends React.Component {
   render() {
     const nationalParks = this.state.nationalParks ? (
       this.state.nationalParks.map(nationalPark => (
-        <li
-          key={nationalPark._id}
-          onClick={this.onSelect.bind(this, nationalPark)}
-          style={{ listStyle: "none" }}
-        >
-          {nationalPark.nationalPark} {nationalPark.state}
-        </li>
+        <div className="col-md-3" style={border}>
+          <li
+            key={nationalPark._id}
+            onClick={this.onSelect.bind(this, nationalPark)}
+            style={{ listStyle: "none" }}
+          >
+            <div className="row">
+              <div className="col-md-12">State: {nationalPark.state}</div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">National Park: {nationalPark.nationalPark}</div>
+            </div>
+          </li>
+        </div>
       ))
     ) : (
       <React.Fragment />
@@ -93,11 +106,11 @@ class NationalParks extends React.Component {
     return (
       <React.Fragment>
         <Header header={this.state.header} />
-        <div className="row">
-          <div className="col-md-6">
-            <ul>{nationalParks}</ul>
+        <div className="row" style={{ width: "100%" }}>
+          <div className="col-md-6" style={{ marginLeft: "10px" }}>
+            <div className="row">{nationalParks}</div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5">
             <h3 style={{ textAlign: "center" }}>Add a park:</h3>
             <NationalParksForm
               formData={this.state.formData}

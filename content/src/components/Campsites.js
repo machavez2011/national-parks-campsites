@@ -8,7 +8,7 @@ class Campsites extends React.Component {
     super(props);
     this.state = {
       campsites: [],
-      header: "Add a campsite"
+      header: "Find a campsite"
     };
     this.onSave = this.onSave.bind(this);
     this.onSelect = this.onSelect.bind(this);
@@ -107,10 +107,10 @@ class Campsites extends React.Component {
           <div className="col-md-6">
             <div className="row">
               <div className="col-md-2">
-                <h3>Locations:</h3>
+                <h3>National Parks:</h3>
               </div>
               <div className="col-md-2">
-                <h3>Numbers:</h3>
+                <h3>Campsites:</h3>
               </div>
             </div>
             <ul>{campsites}</ul>

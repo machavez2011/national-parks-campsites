@@ -4,7 +4,7 @@ import React from "react";
 const headerBackgroundImage = {
   //backgroundImage: "url(" + greenBackground + ")",
   height: "60px",
-  backgroundColor: "#c9edb8"
+  backgroundColor: "#e3f7d9"
 };
 
 const header = {

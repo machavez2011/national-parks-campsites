@@ -29,8 +29,8 @@ class NationalParksForm extends React.Component {
 
     const initializedNataionalPark = {
       _id: nationalPark._id || "",
-      nationalPark: nationalPark.nationalPark || "",
-      state: nationalPark.state || ""
+      state: nationalPark.state || "",
+      nationalPark: nationalPark.nationalPark || ""
     };
 
     let formData = {
@@ -41,19 +41,19 @@ class NationalParksForm extends React.Component {
         validation: {},
         touched: false
       },
-      nationalPark: {
-        originalValue: initializedNataionalPark.nationalPark,
-        value: initializedNataionalPark.nationalPark,
-        valide: true,
+      state: {
+        originalValue: initializedNataionalPark.state,
+        value: initializedNataionalPark.state,
+        valid: true,
         validation: {
           required: true
         },
         touched: false
       },
-      state: {
-        originalValue: initializedNataionalPark.state,
-        value: initializedNataionalPark.state,
-        valid: true,
+      nationalPark: {
+        originalValue: initializedNataionalPark.nationalPark,
+        value: initializedNataionalPark.nationalPark,
+        valide: true,
         validation: {
           required: true
         },
@@ -80,8 +80,8 @@ class NationalParksForm extends React.Component {
     }
     const that = this;
     let item = {
-      nationalPark: this.state.formData.nationalPark.value,
-      state: this.state.formData.state.value
+      state: this.state.formData.state.value,
+      nationalPark: this.state.formData.nationalPark.value
     };
 
     if (this.state.formData._id.value.length > 0) {
@@ -113,17 +113,6 @@ class NationalParksForm extends React.Component {
       <React.Fragment>
         <form className="container">
           <div className="form-group">
-            <label htmlFor="nationalPark">National Park</label>
-            <input
-              type="text"
-              name="nationalPark"
-              className="form-control"
-              id="nationalPark"
-              value={this.state.formData.nationalPark.value}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="phoneNumber">State</label>
             <input
               type="text"
@@ -131,6 +120,17 @@ class NationalParksForm extends React.Component {
               className="form-control"
               id="state"
               value={this.state.formData.state.value}
+              onChange={this.onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="nationalPark">National Park</label>
+            <input
+              type="text"
+              name="nationalPark"
+              className="form-control"
+              id="nationalPark"
+              value={this.state.formData.nationalPark.value}
               onChange={this.onChange}
             />
           </div>

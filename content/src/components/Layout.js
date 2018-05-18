@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 import Home from "./Home";
 import Campsites from "./Campsites";
-import NationalParks from "./nationalParks";
+import NationalParks from "./NationalParks";
 
 class Layout extends React.Component {
   render() {
