@@ -130,12 +130,12 @@ class Campsites extends React.Component {
         <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6" style={{ marginLeft: "10px" }}>
             <CampsitesList
-              campSites={this.state.campsites}
+              campsites={this.state.campsites}
               onClick={this.onSelect}
             />
           </div>
           <div className="col-md-5">
-            <h3 style={{ textAlign: "center" }}>Add a park:</h3>
+            <h3 style={{ textAlign: "center" }}>Add a campsite:</h3>
             <CampsitesForm
               formData={this.state.formData}
               onSave={this.onSave}

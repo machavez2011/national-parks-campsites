@@ -9,7 +9,7 @@ class NationalParks extends React.Component {
     super(props);
     this.state = {
       nationalParks: [],
-      header: "National Parks"
+      header: "Discover National Parks across the US"
     };
 
     this.onCancel = this.onCancel.bind(this);
