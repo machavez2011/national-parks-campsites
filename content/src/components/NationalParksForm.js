@@ -122,6 +122,16 @@ class NationalParksForm extends React.Component {
               value={this.state.formData.state.value}
               onChange={this.onChange}
             />
+            <select
+              value={this.state.formData.state.value}
+              onChange={this.onChange}
+              name="state"
+            >
+              <option>Select</option>
+              <option value="California">California</option>
+              <option value="Washington">Washington</option>
+              <option value="Nevada">Nevada</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="nationalPark">National Park</label>
