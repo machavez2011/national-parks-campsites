@@ -84,49 +84,9 @@ class Campsites extends React.Component {
   }
 
   render() {
-    const campsites = this.state.campsites ? (
-      this.state.campsites.map(campsite => (
-        <li
-          key={campsite._id}
-          onClick={this.onSelect.bind(this, campsite)}
-          style={{ listStyle: "none" }}
-        >
-          <div className="row">
-            <div className="col-md-2">{campsite.nationalPark}</div>
-            <div className="col-md-2">{campsite.campsite}</div>
-          </div>
-        </li>
-      ))
-    ) : (
-      <React.Fragment />
-    );
-
     return (
       <React.Fragment>
         <Header header={this.state.header} />
-        {/* <div className="row" style={{ width: "100%" }}>
-          <div className="col-md-6">
-            <div className="row">
-              <div className="col-md-2">
-                <h3>National Parks:</h3>
-              </div>
-              <div className="col-md-2">
-                <h3>Campsites:</h3>
-              </div>
-            </div>
-            <ul>{campsites}</ul>
-          </div>
-          <div className="col-md-6">
-            <h3 style={{ textAlign: "center" }}>Add a campsite:</h3>
-            <CampsitesForm
-              formData={this.state.formData}
-              onSave={this.onSave}
-              onDelete={this.onDelete}
-              onCancel={this.onCancel}
-            />
-          </div>
-        </div> */}
-
         <div className="row" style={{ width: "100%" }}>
           <div className="col-md-6" style={{ marginLeft: "10px" }}>
             <CampsitesList
