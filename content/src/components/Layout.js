@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Campsites from "./Campsites";
 import NationalParks from "./NationalParks";
+import NationalPark from "./NationalPark";
 import NationalParksAdmin from "./NationalParksAdmin";
 
 class Layout extends React.Component {
@@ -19,6 +20,7 @@ class Layout extends React.Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/national-parks" component={NationalParks} />
+              <Route path="/national-park" component={NationalPark} />
               <Route path="/admin/national-parks" component={NationalParksAdmin} />
               <Route path="/campsites" component={Campsites} />
             </Switch>
