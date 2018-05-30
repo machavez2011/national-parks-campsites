@@ -12,6 +12,16 @@ export function readAll() {
     .catch(responseErrorHandler);
 }
 
+export function readById(id) {
+  const config = {
+    method: "GET",
+  };
+
+  return axiosInstance(baseUrl + id, config)
+    .then(responseSuccessHandler)
+    .catch(responseErrorHandler);
+}
+
 export function create(newNationalPark) {
   const config = {
     method: "POST",
