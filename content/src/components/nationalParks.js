@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import * as nationParksService from "../services/nationalParks.service";
+import * as nationalParksService from "../services/nationalParks.service";
 import NationalParksList from "./NationalParksList";
 import { withRouter } from "react-router";
 
@@ -15,7 +15,7 @@ class NationalParks extends React.Component {
   }
 
   componentDidMount() {
-    nationParksService.readAll().then(nationalParks => {
+    nationalParksService.readAll().then(nationalParks => {
       this.setState({
         nationalParks: nationalParks.items
       });
@@ -24,7 +24,7 @@ class NationalParks extends React.Component {
 
   onSelect(item, event) {
     event.preventDefault();
-    this.props.history.push("/national-park/" + item.nationalPark);
+    this.props.history.push("/national-park/" + item._id);
   }
 
   render() {
