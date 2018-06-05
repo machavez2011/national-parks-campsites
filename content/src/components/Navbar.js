@@ -21,7 +21,7 @@ class Navbar extends React.Component {
       <React.Fragment>
         <div style={ navbarBackground }>
           <img src={tentIcon} alt="tentIcon" style={tentStyle} />
-          <Link to="/home" className="btn btn-link" style={ navbarBtn }>
+          <Link to="/" className="btn btn-link" style={ navbarBtn }>
             Home
           </Link>
           <Link to="/national-parks" className="btn btn-link" style={ navbarBtn }>
