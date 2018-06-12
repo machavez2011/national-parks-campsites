@@ -1,0 +1,12 @@
+.navbarBackground {
+    background-image: url("../pictures/woodGrain2.jpg");
+    text-align: center;
+}
+
+.tent {
+    height: 60px;
+}
+
+.navbarBtn {
+    color: white;
+}
