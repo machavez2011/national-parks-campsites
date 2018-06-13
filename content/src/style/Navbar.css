@@ -1,0 +1,14 @@
+.Navbar {
+    background-image: url("../pictures/woodGrain2.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tent {
+    height: 60px;
+}
+
+.navbarBtn {
+    color: white;
+}
