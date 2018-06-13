@@ -7,7 +7,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="navbarBackground">
+        <div className="Navbar">
           <img src={tentIcon} alt="tentIcon" className="tent" />
           <Link to="/" className="btn btn-link home navbarBtn" >
             Home

@@ -1,6 +1,8 @@
-.navbarBackground {
+.Navbar {
     background-image: url("../pictures/woodGrain2.jpg");
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tent {
